@@ -2,6 +2,7 @@ library(tidyverse)
 library(httr)
 library(jsonlite)
 library(modelr)
+library(feather)
 
 source("/Users/justinsavoie/Documents/settings_hockey_pool.R")
 
@@ -44,4 +45,4 @@ df_binded <- bind_rows(df_2017_2018,
 
 names(df_binded) <- str_replace_all(names(df_binded),"#","")
 
-
+write_feather(x = df_binded, path = "data/df_yearly_individual_stats.feather")
